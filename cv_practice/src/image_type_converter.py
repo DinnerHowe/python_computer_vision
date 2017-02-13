@@ -20,19 +20,17 @@ class ImageTypeConverter():
     def __init__(self):
         self.define()
         self.convert()
-        self.tumbnail(width, height)
+        # imtools.tumbnail(width, height)
 
     def define(self):
-        self.root_index = raw_input('请输入文件目录： ')
-        self.file_type = '.jps'
-
-    def tumbnail(self, width, height):
-        Image.Image.thumbnail((width, height))
+        self.root_index = '/home/howe/python_computer_vision/src/images/'
+        self.file_type = '.jpg'
 
     def convert(self):
         filelist = imtools.get_imlist(self.root_index, self.file_type)
+        print filelist
         for name in filelist:
-            conv_name = os.path.split(name)[0] + self.file_type
+            conv_name = os.path.splitext(name)[0] + self.file_type
             if name != conv_name:
                 try:
                     Image.open(name).save(conv_name)

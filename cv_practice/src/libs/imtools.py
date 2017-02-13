@@ -10,6 +10,12 @@ This programm is tested on kuboki base turtlebot.
 
 """
 import os
+from PIL import Image
 
+#图片格式
 def get_imlist(search_file_path, search_file_type):
-    return [os.path.join(search_file_path, f) for f in os.listdir(search_file_path) if f.endswith(search_file_type)]
+    return [os.path.join(search_file_path, f) for f in os.listdir(search_file_path) if not f.endswith(search_file_type)]
+
+#略缩图
+def tumbnail(width, height):
+    Image.Image.thumbnail((width, height))
